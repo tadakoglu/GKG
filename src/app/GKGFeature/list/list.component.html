@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center p-5 ">
+  <div class="col-11">
+    <div class="card">
+      <div class="card-body">
+       
+        <p class="card-description">Global Capital Group Projesi - Tayfun Adakoğlu
+        </p>
+        <h1 class="card-title">Kullanıcılar</h1>
+        <div class=" mb-3">
+          <button type="button" class="btn btn-info btn-fw" [routerLink]="['/GKGFeature/create']">Yeni Kullanıcı Ekle
+            +</button>
+        </div>
+
+
+        <table matSort class="table">
+          <tr>
+            <th mat-sort-header="name">Adı</th>
+            <th mat-sort-header="surname">Soyad</th>
+            <th mat-sort-header="birthday">Doğum Tarihi</th>
+            <th mat-sort-header="country">Ülke</th>
+            <th mat-sort-header="address">Adres</th>
+            <th mat-sort-header="phone">Telefon</th>
+          </tr>
+
+          <tr *ngFor="let item of listUsers">
+            <td>{{item.name}}</td>
+            <td>{{item.surname}}</td>
+            <td>{{item.birthday | date:'short'}}</td>
+            <td>{{item.country}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.phone}}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-fw"
+                [routerLink]="['/GKGFeature/edit/'+ item.id]">Düzenle</button>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+1) Uygulamayı çalıştırmak için npm install komutu ile gerekli node modüllerini yükleyiniz.

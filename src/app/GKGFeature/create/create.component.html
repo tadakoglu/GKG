@@ -1,0 +1,109 @@
+<div class="d-flex justify-content-center p-5 ">
+  <div class="col-11">
+    <div class="card">
+      <div class="card-body">
+       
+        <p class="card-description">Global Capital Group Projesi - Tayfun Adakoğlu
+        </p>
+        <h4 class="card-title">{{title}}</h4>
+        <form class="forms-sample" #saveForm="ngForm" (ngSubmit)="createUser(saveForm)" novalidate>
+          <div class="form-group row mb-3">
+            <label for="name" class="col-sm-3 col-form-label">Ad</label>
+            <div class="col-sm-9">
+              <input type="text" required class="form-control form-control-lg pl-2 pr-2" id="name" name="name"
+                #name="ngModel" [(ngModel)]="user.name" placeholder="Ad">
+            </div>
+          </div>
+
+          <p *ngIf="formSubmitted && name?.errors?.required" class="validationError">
+            Ad girmelisiniz.</p>
+
+          <div class="form-group row mb-3">
+            <label for="surname" class="col-sm-3 col-form-label">Soyad</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control form-control-lg pl-2 pr-2" id="surname" name="surname"
+                #surname="ngModel" required [(ngModel)]="user.surname" placeholder="Soyad">
+            </div>
+          </div>
+
+          <p *ngIf="formSubmitted && surname?.errors?.required" class="validationError">
+            Soyad girmelisiniz.</p>
+
+          <div class="form-group row mb-3">
+            <label for="birthdayDatePicker" class="col-sm-3 col-form-label">Doğum Tarihi</label>
+            <div class="col-sm-9">
+
+              <mat-form-field appearance="fill" style="width: 200px;" class="my-class">
+                <mat-label>Doğum Tarihi</mat-label>
+                <input matInput [matDatepicker]="birthdayDatePicker" #matInput id="matInput" name="matInput" required
+                  (dateChange)="loadDatepicker($event.value)" [(ngModel)]="birthday">
+                <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker">
+                  <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                </mat-datepicker-toggle>
+                <mat-datepicker #birthdayDatePicker></mat-datepicker>
+              </mat-form-field>
+
+            </div>
+
+
+
+          </div>
+
+          <p *ngIf="formSubmitted && !user.birthday" class="validationError">
+            Doğum tarihi girmelisiniz.</p>
+
+          <div class="form-group row mb-3">
+            <label for="country" class="col-sm-3 col-form-label">Ülke</label>
+            <div class="col-sm-9">
+
+              <mat-form-field appearance="fill" style="width: 200px;">
+                <mat-label>Ülke</mat-label>
+                <mat-select [(value)]="user.country">
+                  <mat-option></mat-option>
+                  <mat-option id="country" [value]="country" *ngFor="let country of getCountries">{{country }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <p *ngIf="formSubmitted  && !user.country" class="validationError">
+            Ülke girmelisiniz.</p>
+
+          <div class="form-group row mb-3">
+            <label for="address" class="col-sm-3 col-form-label">Adres</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control form-control-lg pl-2 pr-2" id="address" name="address"
+                #address="ngModel" required [(ngModel)]="user.address" placeholder="Adres">
+            </div>
+          </div>
+          <p *ngIf="formSubmitted  && address?.errors?.required" class="validationError">
+            Adres girmelisiniz.</p>
+
+          <div class="form-group row mb-3">
+            <label for="phone" class="col-sm-3 col-form-label">Telefon</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control form-control-lg pl-2 pr-2" id="phone" name="phone" #phone="ngModel"
+                required [(ngModel)]="user.phone" placeholder="Telefon">
+            </div>
+          </div>
+          <p *ngIf="formSubmitted  && phone?.errors?.required" class="validationError">
+            Telefon girmelisiniz.</p>
+
+
+
+          <button type="submit" class="btn btn-info btn-fw">{{title}}</button>
+          <button type="button" class="btn btn-light" (click)="goToListPage()">İptal</button>
+
+
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
